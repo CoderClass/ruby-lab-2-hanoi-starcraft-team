@@ -22,12 +22,19 @@
     <div class="collapse navbar-toggleable-xs" id="nav-content">
       <a class="navbar-brand" href="/"><%= image_tag 'logo-small.png' %></a>
       <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign In", login_path, class: "nav-link" %>
-        </li>
+
+        <% if signed_in? %>
+          <%= link_to "Log Out", logout_path, class: "nav-link"  %>
+        <% else %>
+
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign In", login_path, class: "nav-link" %>
+          </li>
+
+        <% end %>
         <li class="nav-item">
           <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
         </li>
@@ -39,7 +46,7 @@
 
   <footer class="footer-12">
     <div class="container">
-        Made with <%= image_tag('heart') %> in Sai Gon
+        Made with <%= image_tag('heart.png') %> in Sai Gon
     </div>
   </footer>
 
